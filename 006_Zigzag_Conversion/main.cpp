@@ -1,9 +1,7 @@
 #include <iostream>
 #include <utility>
 #include <vector>
-#include <algorithm>
 #include <string>
-#include <climits>
 
 class Solution {
 public:
