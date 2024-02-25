@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Create Directory",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "${workspaceFolder}/build/${relativeFileDirname}"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "Build C++",
+            "command": "clang++",
+            "args": [
+                "-g",
+                "-Wall",
+                "-std=c++20",
+                "-o",
+                "${workspaceFolder}/build/${relativeFileDirname}/${fileBasenameNoExtension}.out",
+                "${file}",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "Create Directory"
+        }
+    ]
+}

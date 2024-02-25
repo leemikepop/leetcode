@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+
+## Directory
+build
+
+## File
+settings.json
+*.code-workspace
