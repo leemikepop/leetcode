@@ -19,7 +19,14 @@
 		"prefix": "main",
 		"body": [
 			"int main(int argc, char* argv[]){",
-			"	$1",
+			"	Solution *sol = new Solution();",
+			"	std::vector<${1:std::string}> test_cases = {",
+			"		$2",
+			"	};",
+			"",
+			"	for(${3:std::string} test_case : test_cases){",
+			"		std::cout << $4 << std::endl;",
+			"	}",
 			"	return 0;",
 			"}"
 		],
@@ -29,12 +36,12 @@
 		"prefix": "include",
 		"body": [
 			"#include <iostream>",
-			"#include <utility>		#pair", 
+			"#include <utility>		//pair", 
 			"#include <vector>",
 			"#include <algorithm>",
 			"#include <string>",
 			"#include <climits>",
 		],
 		"description": "Standard include"
-	}
+	},
 }
