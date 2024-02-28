@@ -20,12 +20,12 @@
 		"body": [
 			"int main(int argc, char* argv[]){",
 			"	Solution *sol = new Solution();",
-			"	std::vector<${1:std::string}> test_cases = {",
+			"	vector<${1:string}> test_cases = {",
 			"		$2",
 			"	};",
 			"",
-			"	for(${3:std::string} test_case : test_cases){",
-			"		std::cout << $4 << std::endl;",
+			"	for(${3:string} test_case : test_cases){",
+			"		std::cout << sol->${4:method}(test_case) << std::endl;",
 			"	}",
 			"	return 0;",
 			"}"
@@ -35,12 +35,15 @@
 	"Standard include": {
 		"prefix": "include",
 		"body": [
-			"#include <iostream>",
-			"#include <utility>		//pair", 
+			"#include <iostream>",			
 			"#include <vector>",
-			"#include <algorithm>",
 			"#include <string>",
+			"#include <algorithm>",			
 			"#include <climits>",
+			"#include <utility>		//pair",
+			"",
+			"using std::vector;", 
+			"using std::string;", 
 		],
 		"description": "Standard include"
 	},
