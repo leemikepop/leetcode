@@ -12,7 +12,8 @@
             "program": "${workspaceFolder}/build/${relativeFileDirname}/${fileBasenameNoExtension}.out",
             "args": [],
             "cwd": "${workspaceFolder}",
-            "preLaunchTask": "Build C++"
+            "preLaunchTask": "Build C++",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }
