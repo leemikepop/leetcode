@@ -94,8 +94,8 @@
 			"\tconst auto N = container.size();",
 			"\tsize_t current = 0;",
 			"\tos << \"[\";",
-			"\tfor (const auto &item : container) {",
-			"\tconst char *separator = current++ == N - 1 ? \"\" : \", \";",
+			"\t\tfor (const auto &item : container) {",
+			"\t\tconst char *separator = current++ == N - 1 ? \"\" : \", \";",
 			"\tos << item << separator;",
 			"\t}",
 			"\tos << \"]\";",
@@ -104,7 +104,7 @@
 		],
 		"description": "Standard include"
 	},
-	"": {
+	"Print hashmap": {
 		"prefix": "overload hashmap",
 		"body": [
 		  "// Overload the << operator to print unordered_map<int, int>",
@@ -127,5 +127,24 @@
 		  "// }"
 		],
 		"description": ""
-	  }
+	},
+	"Print LinkedList": {
+		"prefix": "overload linkedlist",
+		"body": [
+		  "std::ostream &operator<<(std::ostream &os, ListNode *head) {",
+		  "\tif (head == nullptr) {",
+		  "\t\tos << \"[]\";",
+		  "\t} else {",
+		  "\t\tos << \"[\";",
+		  "\t\twhile (head != nullptr) {",
+		  "\t\t\tos << head->val << \" \";",
+		  "\t\t\thead = head->next;",
+		  "\t\t}",
+		  "\t\tos << \"\\b]\";",
+		  "\t}",
+		  "\treturn os;",
+		  "}"
+		],
+		"description": ""
+	},
 }
