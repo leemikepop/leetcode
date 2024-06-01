@@ -21,9 +21,13 @@
                 "-g",
                 "-Wall",
                 "-std=c++20",
-                "-o",
-                "${workspaceFolder}/build/${relativeFileDirname}/${fileBasenameNoExtension}.out",
                 "${file}",
+                "${workspaceFolder}/000_Utilities/vecParser.cpp",
+                "${workspaceFolder}/000_Utilities/vecToListNode.cpp",
+                "-I",
+                "${workspaceFolder}/000_Utilities",
+                "-o",
+                "${workspaceFolder}/build/${relativeFileDirname}/${fileBasenameNoExtension}.out"                
             ],
             "group": {
                 "kind": "build",
