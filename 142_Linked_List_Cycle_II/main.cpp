@@ -17,12 +17,12 @@ class Solution {
             ListNode *tortoise = head;
             ListNode *hare = head;
             ListNode *Node = nullptr;
-            while(tortoise && hare->next) {
+            while(hare && hare->next) {
                 tortoise = tortoise->next;
                 hare = hare->next->next;
                 if(tortoise == hare) {
                     tortoise = head;
-                    while(tortoise != head) {
+                    while(tortoise != hare) {
                         tortoise = tortoise->next;
                         hare = hare->next;
                     }
@@ -40,19 +40,13 @@ class Solution {
             
             for(int i = 1; i < v.size(); i++) {
                 current->next = new ListNode(v[i]);
+                current = current->next;
                 if (i == pos[0]) {
                     cycle = current;
                 }
-                current = current->next;
             }
             if (pos[0] == 0) cycle = head;
             current->next = cycle;
-            // int index = 0;
-            // while(head && index < 10) {
-            //     cout << head->val << " ";
-            //     head = head->next;
-            //     index++;
-            // }
             return head;
         }
     };
@@ -63,13 +57,15 @@ int main(int argc, char *argv[]) {
     vector<vector<vector<int>>> test_cases = {
         {{3,2,0,-4}, {1}},
         {{1,2}, {0}},
-        {{1}, {-1}}
+        {{1}, {-1}},
+        {{1,2}, {-1}},
     };
 
+    ListNode* result = nullptr;
     for (auto i : test_cases) {
-        cout << sol->detectCycle(sol->createLinkedList(i[0], i[1]))->val << endl;
+        result = sol->detectCycle(sol->createLinkedList(i[0], i[1]));
+        if (result) cout << result->val << endl;
+        else cout << "No cycle" << endl;
     }
-    // sol->createLinkedList(test_cases[1][0], test_cases[1][1]);
-    // cout << sol->detectCycle(sol->createLinkedList(test_cases[1][0], test_cases[1][1]))->val << endl;
     return 0;
 }
