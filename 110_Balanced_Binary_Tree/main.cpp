@@ -16,25 +16,12 @@ class Solution {
     public:
         bool isBalanced(TreeNode* root) {
             if(!root) return true;
-            if(!root->left && !root->right) return true;
-            else if(root->left || root->right) {
-                if(!root->left && root->right) if(height(root->right) <= 1) return true;
-                if(!root->right && root->left) if(height(root->left) <= 1) return true;
-                if(root->left && root->right) {
-                    if(abs(height(root->left)-height(root->right)) <= 1) return true;
-                }
-            }
-            return false;
+            return abs(height(root->left)-height(root->right)) <= 1 && isBalanced(root->left) && isBalanced(root->right);
         }
 
         int height(TreeNode* root) {
             if(!root) return 0;
-            else {
-                if(!root->left && !root->right) return 1;
-                else if(!root->left && root->right) return height(root->right) + 1;
-                else if(!root->right && root->left) return height(root->left) + 1;
-                else return max(height(root->left), height(root->right)) + 1;
-            }
+            return 1 + max(height(root->left), height(root->right));
         }
 
         TreeNode* createTree(vector<int> v) {
