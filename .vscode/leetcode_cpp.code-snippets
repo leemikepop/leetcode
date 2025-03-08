@@ -19,6 +19,31 @@
 		"prefix": "main",
 		"body": [
 			"int main(int argc, char* argv[]){",
+			"\tclock_t start = clock();",
+			"",
+			"\tSolution *sol = new Solution();",
+			"\tvector<${1:string}> test_cases = {",
+			"\t\t$2",
+			"\t};",
+			"",
+			"\tfor(${3:string} test_case : test_cases){",
+			"\t\tstd::cout << sol->${4:method}(test_case) << std::endl;",
+			"\t}",
+			"",
+			"\tclock_t end = clock();",
+			"\tdouble duration = (double)(end - start) / (__clock_t)1000;",
+			"\tstd::cout << std::endl << \"Exicution Time: \" << duration << \" ms\" << std::endl;",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "Cpp main function"
+	},
+	"Cpp main function with chrono": {
+		"prefix": "chrono main",
+		"body": [
+			"int main(int argc, char* argv[]){",
+			"\tauto start = std::chrono::high_resolution_clock::now();",
+			"",
 			"\tSolution *sol = new Solution();",
 			"\tvector<${1:string}> test_cases = {",
 			"\t$2",
@@ -27,6 +52,10 @@
 			"\tfor(${3:string} test_case : test_cases){",
 			"\tstd::cout << sol->${4:method}(test_case) << std::endl;",
 			"\t}",
+			"",
+			"\tauto end = std::chrono::high_resolution_clock::now();",
+			"\tauto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);",
+			"\tstd::cout << std::endl << \"Exicution Time: \" << duration.count() << \" ms\" << std::endl;",
 			"\treturn 0;",
 			"}"
 		],
@@ -40,6 +69,7 @@
 			"#include <string>",
 			"#include <algorithm>",			
 			"#include <climits>",
+			"#include <ctime>",
 			"#include <utility>\t//pair",
 			"",
 			"using std::vector;", 
@@ -59,13 +89,13 @@
 			"\tstatic constexpr bool value = true;",
 			"};",
 			"template <typename T>",
-			"typename enable_if<is_container<T>::value, ostream &>::type",
-			"inline operator<<(ostream &os, const T &container) {",
+			"typename std::enable_if<is_container<T>::value, std::ostream &>::type",
+			"inline operator<<(std::ostream &os, const T &container) {",
 			"\tconst auto N = container.size();",
 			"\tsize_t current = 0;",
 			"\tos << \"[\";",
-			"\tfor (const auto &item : container) {",
-			"\tconst char *separator = current++ == N - 1 ? \"\" : \", \";",
+			"\t\tfor (const auto &item : container) {",
+			"\t\tconst char *separator = current++ == N - 1 ? \"\" : \", \";",
 			"\tos << item << separator;",
 			"\t}",
 			"\tos << \"]\";",
@@ -74,7 +104,7 @@
 		],
 		"description": "Standard include"
 	},
-	"": {
+	"Print hashmap": {
 		"prefix": "overload hashmap",
 		"body": [
 		  "// Overload the << operator to print unordered_map<int, int>",
@@ -97,5 +127,24 @@
 		  "// }"
 		],
 		"description": ""
-	  }
+	},
+	"Print LinkedList": {
+		"prefix": "overload linkedlist",
+		"body": [
+		  "std::ostream &operator<<(std::ostream &os, ListNode *head) {",
+		  "\tif (head == nullptr) {",
+		  "\t\tos << \"[]\";",
+		  "\t} else {",
+		  "\t\tos << \"[\";",
+		  "\t\twhile (head != nullptr) {",
+		  "\t\t\tos << head->val << \" \";",
+		  "\t\t\thead = head->next;",
+		  "\t\t}",
+		  "\t\tos << \"\\b]\";",
+		  "\t}",
+		  "\treturn os;",
+		  "}"
+		],
+		"description": ""
+	},
 }
