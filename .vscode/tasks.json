@@ -22,10 +22,10 @@
                 "-Wall",
                 "-std=c++20",
                 "${file}",
-                "${workspaceFolder}/000_Utilities/vecParser.cpp",
-                "${workspaceFolder}/000_Utilities/vecToListNode.cpp",
+                "${workspaceFolder}/0000_Utilities/vecParser.cpp",
+                "${workspaceFolder}/0000_Utilities/vecToListNode.cpp",
                 "-I",
-                "${workspaceFolder}/000_Utilities",
+                "${workspaceFolder}/0000_Utilities",
                 "-o",
                 "${workspaceFolder}/build/${relativeFileDirname}/${fileBasenameNoExtension}.out"                
             ],
